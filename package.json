@@ -10,6 +10,13 @@
   "dependencies": {
     "next": "9.4.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-animated-checkbox": "^0.1.4",
+    "react-dom": "16.13.1",
+    "react-icons": "^3.10.0",
+    "react-switch": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.36",
+    "typescript": "^3.9.5"
   }
 }

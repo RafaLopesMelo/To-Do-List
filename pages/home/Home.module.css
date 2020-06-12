@@ -1,0 +1,124 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    font-family: 'Noto Sans HK', sans-serif;
+    background-color: #fefefe;
+    color: #303a52;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 10vh;
+    padding: 0 4vw;
+    color: #fc5185;
+}
+
+.navbar h1 {
+    font-size: 3rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.menu * {
+    padding: 0 2vw;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10vw;
+}
+
+.todo {
+    width: 60vw;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
+    border: 0.2pt solid rgba(0,0,0,0.1);
+}
+
+.addTask {
+    display: flex;
+    align-items: center;
+    width: 28%;
+    margin-bottom: 4%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.addTask:hover {
+    color: #fc5185;
+    transform: scale(1.05);
+}
+
+.addTask svg {
+    transition-duration: 1.5s;
+}
+
+.addTask:hover svg {
+    transform: rotate(135deg);
+}
+
+.task {
+    width: 100%;
+    margin: 2% 0;
+    padding: 2%;
+    border: 0.2pt solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.task input {
+    height: 3vh;
+    width: 3vw;
+    margin-right: 1vw;
+}
+
+.task h3 {
+    font-size: 1.5rem;
+}
+
+.taskTitle {
+    display: flex;
+    align-items: center;
+}
+
+.task p {
+    font-size: 1.1rem;
+    margin: 2vh 0 0 4vw;
+}
+
+.footerbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 6vh;
+    font-size: 1.5rem;
+    color: #fc5185;
+    border-top: 1pt solid #fc5185;
+}
+
+.footerbar div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10vw;
+    
+}
