@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Switch from 'react-switch';
+import Checkbox from 'react-animated-checkbox';
 import { MdSettings } from 'react-icons/md';
 import {
     FiTwitter,
@@ -15,43 +16,51 @@ interface ITask {
     id: string;
     title: string;
     description: string;
+    isChecked: boolean;
 }
 
 export default function Home() {
     const [ tasks, setTasks ] = useState<ITask[]>([]);
-    const [ isDark, setIsDark ] = useState(false);
+    const [ isDark, setIsDark ] = useState(false)
     
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('tasks'));
         if (data) setTasks(data)
     }, []);
 
-    function handleAddTask() {
-        const id = String(Math.random() * 10000)
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
+
+        for(let i=0; i<tasks.length; i++) {
+            if(tasks[i].isChecked === true) {
+                setTimeout(() => {
+                    data.splice(i, 1)
+                    setTasks(data)  
+                }, 1000)      
+            }
+        }
+    }, [tasks])
+
+    async function handleAddTask() {
+        const id = tasks.length;
         const title = prompt('Adicione um título à tarefa');
 
         if (!title) return alert('Título inválido!');
 
         const description = prompt('Adicione uma descrição à tarefa');
-
         const newTasks = JSON.parse(localStorage.getItem('tasks')) || []
-        newTasks.push({ id, title, description });
-        localStorage.setItem('tasks', JSON.stringify(newTasks))
+
+        newTasks.push({ id, title, description, isChecked: false});
 
         setTasks(newTasks);
     }
 
-    function handleCheckboxClick(id: string) {
-        const data = JSON.parse(localStorage.getItem('tasks'));;
+    async function handleCheckboxClick(id: string) {
+        const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
         const toDeleteTask = data.findIndex((task: ITask) => task.id === id);
-
-        data.splice(toDeleteTask, 1);
-        localStorage.setItem('tasks', JSON.stringify(data));
-        setTasks(data);
-    }
-
-    function handleToggleTheme() {
-        setIsDark(prev => !prev)
+        data[toDeleteTask].isChecked = true;
+        setTasks(data); 
     }
 
     return (
@@ -69,7 +78,7 @@ export default function Home() {
                 <div className={styles.config}>
                     <MdSettings size={50} />
                     <Switch 
-                        onChange={handleToggleTheme}
+                        onChange={() => setIsDark(prev => !prev)}
                         checked={isDark}
                         onColor="#fc5185"
                         offColor="#9e579d"
@@ -88,14 +97,30 @@ export default function Home() {
                 </div>
 
                 {tasks.map(task => 
-                    <div 
+                    <div
                         key={task.id} 
-                        className={isDark
-                            ? darkStyles.task
-                            : styles.task
+                        className={
+                        isDark
+                            ? task.isChecked === true
+                                ? `${styles.invisibleTask} ${darkStyles.task}`
+                                : darkStyles.task
+                            : task.isChecked === true
+                                ? `${styles.invisibleTask} ${styles.task}`
+                                : styles.task
                     }>
                         <div className={styles.taskTitle}>
-                        <input type="checkbox" onClick={() => handleCheckboxClick(task.id)}/>
+                        <Checkbox 
+                            checked={task.isChecked}
+                            onClick={() => {
+                                handleCheckboxClick(task.id)
+                            }}
+                            checkBoxStyle={{
+                                checkedColor: "#34b93d",
+                                size: 30,
+                                unCheckedColor: "#b8b8b8"
+                              }}
+                            duration={200}
+                        />
                             <h3>{task.title}</h3>
                         </div>
                         {task.description && <p>{task.description}</p> }

@@ -84,14 +84,9 @@
     border-radius: 10px;
 }
 
-.task input {
-    height: 3vh;
-    width: 3vw;
-    margin-right: 1vw;
-}
-
-.task h3 {
-    font-size: 1.5rem;
+.invisibleTask {
+    transition-duration: 1s;
+    opacity: 0;
 }
 
 .taskTitle {
@@ -99,8 +94,13 @@
     align-items: center;
 }
 
+.task h3 {
+    font-size: 2rem;
+    margin: 0 2vw;
+}
+
 .task p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 2vh 0 0 4vw;
 }
 
