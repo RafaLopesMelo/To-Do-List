@@ -14,7 +14,6 @@ import HamburguerMenu from '../../components/HamburguerMenu';
 
 export default function Home() {
     const [isDark, setIsDark] = useState(false);
-    
 
     return (
         <div

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Checkbox from 'react-animated-checkbox';
 import { FiPlus } from 'react-icons/fi';
 
-import InsertTask from '../../components/InsertTask';
+import InsertTask from '../AddTask';
 
 import styles from './styles/Tasks.module.css';
 import darkStyles from './styles/darkTasks.module.css';
@@ -32,7 +32,7 @@ export default function Tasks(props :{isDark: boolean}) {
                 setTimeout(() => {
                     data.splice(i, 1)
                     setTasks(data)  
-                }, 1000)      
+                }, 500)      
             }
         }
     }, [tasks])
@@ -86,7 +86,7 @@ export default function Tasks(props :{isDark: boolean}) {
                 </div>
             )}
 
-            <InsertTask show={showAddTask} setShow={setShowAddTask}/>
+            <InsertTask show={showAddTask} setShow={setShowAddTask} setTasks={setTasks}/>
         </main>
     )
 }
