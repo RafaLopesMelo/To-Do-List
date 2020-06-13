@@ -1,0 +1,60 @@
+.todo {
+    width: 60vw;
+    min-height: 15vh;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
+    border: 0.2pt solid rgba(0,0,0,0.1);
+}
+
+.addTask {
+    display: flex;
+    align-items: center;
+    width: 28%;
+    margin-bottom: 4%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.addTask:hover {
+    color: #fc5185;
+    transform: scale(1.05);
+}
+
+.addTask svg {
+    transition-duration: 1.5s;
+}
+
+.addTask:hover svg {
+    transform: rotate(135deg);
+}
+
+.task {
+    width: 100%;
+    margin: 2% 0;
+    padding: 2%;
+    border: 0.2pt solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.taskTitle {
+    display: flex;
+    align-items: center;
+}
+
+.task h3 {
+    font-size: 2.2rem;
+    padding-bottom: 1vh;
+    margin: 0 1vw;
+}
+
+.task p {
+    font-size: 1.2rem;
+    margin: 1vh 0 0 3vw;
+}
+
+.invisibleTask {
+    transition-duration: 1s;
+    opacity: 0;
+}

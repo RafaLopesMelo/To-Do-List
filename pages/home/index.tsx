@@ -1,83 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Switch from 'react-switch';
-import Checkbox from 'react-animated-checkbox';
 import { MdSettings } from 'react-icons/md';
 import {
     FiTwitter,
     FiInstagram,
     FiLinkedin,
-    FiPlus
 } from 'react-icons/fi';
 
 import styles from './Home.module.css';
-import darkStyles from './DarkHome.module.css';
 
-interface ITask {
-    id: string;
-    title: string;
-    description: string;
-    isChecked: boolean;
-}
+import Tasks from '../../components/Tasks';
+import HamburguerMenu from '../../components/HamburguerMenu';
 
 export default function Home() {
-    const [ tasks, setTasks ] = useState<ITask[]>([]);
-    const [ isDark, setIsDark ] = useState(false)
+    const [isDark, setIsDark] = useState(false);
     
-    useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('tasks'));
-        if (data) setTasks(data)
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
-
-        for(let i=0; i<tasks.length; i++) {
-            if(tasks[i].isChecked === true) {
-                setTimeout(() => {
-                    data.splice(i, 1)
-                    setTasks(data)  
-                }, 1000)      
-            }
-        }
-    }, [tasks])
-
-    async function handleAddTask() {
-        const id = tasks.length;
-        const title = prompt('Adicione um título à tarefa');
-
-        if (!title) return alert('Título inválido!');
-
-        const description = prompt('Adicione uma descrição à tarefa');
-        const newTasks = JSON.parse(localStorage.getItem('tasks')) || []
-
-        newTasks.push({ id, title, description, isChecked: false});
-
-        setTasks(newTasks);
-    }
-
-    async function handleCheckboxClick(id: string) {
-        const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
-        const toDeleteTask = data.findIndex((task: ITask) => task.id === id);
-        data[toDeleteTask].isChecked = true;
-        setTasks(data); 
-    }
 
     return (
-        <div className={
-            isDark
-                ? `${darkStyles.container}`
-                : `${styles.container}`
-        }>
-            <nav className={styles.navbar}>
-                <h1>Just do it!</h1>
-                <div className={styles.menu}>
-                    <h2 className={styles.underlined}>Tarefas</h2>
-                    <h2>Sobre</h2>
-                </div>
+        <div
+            style={
+                isDark
+                    ? { backgroundColor: "#443c70", color: "#fefefe" }
+                    : { backgroundColor: "#fefefe", color: "#303a52" }
+            }
+            className={styles.container}
+        >
+            <nav className={styles.navbar}>       
+                    <HamburguerMenu/>
                 <div className={styles.config}>
                     <MdSettings size={50} />
-                    <Switch 
+                    <Switch
                         onChange={() => setIsDark(prev => !prev)}
                         checked={isDark}
                         onColor="#fc5185"
@@ -86,48 +38,7 @@ export default function Home() {
                 </div>
             </nav>
 
-            <main className={
-                isDark 
-                    ? darkStyles.todo
-                    : styles.todo
-                }>
-                <div className={styles.addTask} onClick={handleAddTask}>
-                    <FiPlus size={30} />
-                    <h2>Adicionar nova tarefa</h2>
-                </div>
-
-                {tasks.map(task => 
-                    <div
-                        key={task.id} 
-                        className={
-                        isDark
-                            ? task.isChecked === true
-                                ? `${styles.invisibleTask} ${darkStyles.task}`
-                                : darkStyles.task
-                            : task.isChecked === true
-                                ? `${styles.invisibleTask} ${styles.task}`
-                                : styles.task
-                    }>
-                        <div className={styles.taskTitle}>
-                        <Checkbox 
-                            checked={task.isChecked}
-                            onClick={() => {
-                                handleCheckboxClick(task.id)
-                            }}
-                            checkBoxStyle={{
-                                checkedColor: "#34b93d",
-                                size: 30,
-                                unCheckedColor: "#b8b8b8"
-                              }}
-                            duration={200}
-                        />
-                            <h3>{task.title}</h3>
-                        </div>
-                        {task.description && <p>{task.description}</p> }
-                    </div>
-                )}
-            </main>
-
+            <Tasks isDark={isDark}/>
 
             <footer className={styles.footerbar}>
                 <div>

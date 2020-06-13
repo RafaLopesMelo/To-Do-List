@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    padding-bottom: 1vh;
+    cursor: pointer;
+}
+
+.menuToggle {
+    width: 50px;
+    margin-right: 1vw;
+    padding-top: 1vh;
+}
+
+.one,
+.two,
+.three {
+    background-color: #fc5185;
+    border-radius: 5px;
+    height: 8px;
+    width: 100%;
+    margin: 6px auto;
+    transition-duration: 0.5s;
+}
+
+/* Clicked hamburguer menu */
+
+.on .menuToggle .one {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.on .menuToggle .two {
+    opacity: 0;
+}
+
+.on .menuToggle .three {
+    transform: rotate(-45deg) translate(14px, -12px);
+}
