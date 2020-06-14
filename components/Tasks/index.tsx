@@ -38,10 +38,12 @@ export default function Tasks(props :{isDark: boolean}) {
     }, [tasks])
 
     async function handleCheckboxClick(id: string) {
-        const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
-        const toDeleteTask = data.findIndex((task: ITask) => task.id === id);
-        data[toDeleteTask].isChecked = true;
-        setTasks(data); 
+        if (id !== undefined) {
+            const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
+            const toDeleteTask = data.findIndex((task: ITask) => task.id === id);
+            data[toDeleteTask].isChecked = true;
+            setTasks(data); 
+        }
     }
 
     return (
@@ -86,7 +88,7 @@ export default function Tasks(props :{isDark: boolean}) {
                 </div>
             )}
 
-            <InsertTask show={showAddTask} setShow={setShowAddTask} setTasks={setTasks}/>
+            {showAddTask && <InsertTask show={showAddTask} setShow={setShowAddTask} setTasks={setTasks} isDark={props.isDark}/>}
         </main>
     )
 }

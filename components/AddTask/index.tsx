@@ -1,9 +1,10 @@
 import { FormEvent, useState, ChangeEvent } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
-import styles from './AddTask.module.css';
+import styles from './styles/AddTask.module.css';
+import darkStyles from './styles/DarkAddTask.module.css';
 
-export default function InsertTask(props: {show: boolean, setShow, setTasks}) {
+export default function InsertTask(props: {show: boolean, setShow, setTasks, isDark: boolean}) {
     const [ formData, setFormData ] = useState({
         title: '',
         description: ''
@@ -17,38 +18,45 @@ export default function InsertTask(props: {show: boolean, setShow, setTasks}) {
 
     async function handleSubmit(e: FormEvent) {
         e.preventDefault()
+        const id = Math.random() * 1000
 
-        props.setTasks(prev => 
-            [...prev,
-                {
-                    id: prev.length,
-                    title: formData.title,
-                    description: formData.description
-                }
-            ])
-        props.setShow(prev => !prev)
+        if (formData.title) {
+            props.setTasks(prev => 
+                [...prev,
+                    {
+                        id,
+                        title: formData.title,
+                        description: formData.description
+                    }
+                ])
+            props.setShow(prev => !prev)
+        } else {
+            alert('Por favor, dê um título a sua tarefa!');
+        }
 
         setFormData({title: "", description:""})
     }
 
     return (
-        <div 
-            className={styles.container}
-            style={props.show ? {display: 'flex'} : {display: 'none'}}
-        >
-            <div className={styles.background}></div>
-            <div className={styles.taskForm}>
+        <div className={styles.container}>
+            <div className={styles.background} onClick={() => props.setShow(prev => !prev)}></div>
+            <div className={
+                    props.isDark
+                        ? darkStyles.darkTaskForm
+                        : styles.taskForm
+            }>
                 <h1>Adicione as informações da tarefa!</h1>
                 <form onSubmit={handleSubmit}>
                     <label>
                         <p>Coloque um título!</p>
-                        <input 
+                        <input
                             type="text" 
                             placeholder="Ex: Ler um livro"
                             value={formData.title}
                             name="title"
                             onChange={handleInputChange}
                             autoComplete="off"
+                            autoFocus
                         />
                     </label>
                     <label>
