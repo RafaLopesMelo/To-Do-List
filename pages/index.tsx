@@ -9,8 +9,8 @@ import {
 
 import styles from './Home.module.css';
 
-import Tasks from '../../components/Tasks';
-import HamburguerMenu from '../../components/HamburguerMenu';
+import Tasks from '../components/Tasks';
+import HamburguerMenu from '../components/HamburguerMenu';
 
 export default function Home() {
     const [isDark, setIsDark] = useState(false);
