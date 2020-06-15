@@ -9,15 +9,9 @@
     border-top: 1pt solid #fc5185;
 }
 
-.footerbar div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 16vw;  
-}
-
-.footerbar div a svg {
+.footerbar a svg {
     margin-top: 10px;
+    margin: 0 5vw;
     font-size: 2rem;
 }
 
