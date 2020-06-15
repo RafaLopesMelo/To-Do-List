@@ -1,7 +1,5 @@
 ![Ilustração NextJS](https://miro.medium.com/fit/c/1838/551/1*rLE1jm-KN5RjNsHmMfQfag.png)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## 🔥 &nbsp;&nbsp; Introdução
 
 Esta é uma aplicação de to-do list utilizando o NextJS. Este framework é mantido pela Vercel (antiga Zeit) e possui o objetivo de agilizar a criação de interfaces com React, oferecendo suporte ao SSR (Server Side Rendering) e TypeScript, webpack configurado, roteamento dinâmico e muitas outras vantagens.
