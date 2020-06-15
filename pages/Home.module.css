@@ -1,47 +1,8 @@
 .container {
     display: flex;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    min-height: 100vh;
-}
-
-.navbar {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100vw;
-    height: 10vh;
-    padding: 0 4vw;
-    color: #fc5185;
-}
-
-.config {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 10vw;
-}
-
-.config svg:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.footerbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 6vh;
-    font-size: 1.5rem;
-    color: #fc5185;
-    border-top: 1pt solid #fc5185;
-}
-
-.footerbar div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 10vw;  
 }

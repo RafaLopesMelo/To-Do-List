@@ -3,15 +3,14 @@
     min-height: 15vh;
     padding: 2%;
     border-radius: 10px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
-    border: 0.2pt solid rgba(0,0,0,0.1);
+    border: 0.2pt solid;
 }
 
 .addTask {
     display: flex;
     align-items: center;
     margin-bottom: 4%;
-    font-size: 1.2rem;
+    width: fit-content;
     cursor: pointer;
     transition-duration: 0.2s;
 }
@@ -21,7 +20,12 @@
     transform: scale(1.05);
 }
 
+.addTask h2 {
+    font-size: 1.5rem;
+}
+
 .addTask svg {
+    font-size: 2rem;
     transition-duration: 1.5s;
 }
 
@@ -42,7 +46,7 @@
     align-items: center;
 }
 
-.task h3 {
+.taskTitle h3 {
     font-size: 2.2rem;
     padding-bottom: 1vh;
     margin: 0 1vw;
@@ -51,9 +55,26 @@
 .task p {
     font-size: 1.2rem;
     margin: 1vh 0 0 3vw;
+    word-wrap: break-word;
 }
 
 .invisibleTask {
     transition-duration: 0.5s;
     opacity: 0;
+}
+
+@media(max-width: 1024px) {
+    .todo {
+        width: 80vw;
+        min-height: 15vh;
+    }
+
+    .addTask h2 {
+        font-size: 2rem;
+    }
+    
+    .addTask svg {
+        font-size: 2.5rem;
+    }
+    
 }

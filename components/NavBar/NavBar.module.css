@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 8vh;
+    padding: 0 4vw;
+    color: #fc5185;
+}
+
+.config {
+    display: flex;
+    align-items: center;
+}
+
+.config svg {
+    font-size: 3rem;
+    margin: 0 0  0 4vw;
+}
+
+.config svg:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

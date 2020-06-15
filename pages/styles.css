@@ -14,3 +14,21 @@ body {
 a {
     color: #fc5185;
 }
+
+@media(min-width: 1600px) {
+    html {
+        font-size: 150%;
+    }
+}
+
+@media(min-width: 800px) {
+    html {
+        font-size: 100%;
+    }
+}
+
+@media(max-width: 450px) {
+    html {
+        font-size: 60%;
+    }
+}

@@ -1,0 +1,26 @@
+.footerbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 6vh;
+    font-size: 1.5rem;
+    color: #fc5185;
+    border-top: 1pt solid #fc5185;
+}
+
+.footerbar div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 16vw;  
+}
+
+.footerbar div a svg {
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+.footerbar div a svg:hover{
+    transform: scale(1.1);
+}

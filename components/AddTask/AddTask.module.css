@@ -18,34 +18,16 @@
 .taskForm {
     position: absolute;
     z-index: 11;
-    width: 40vw;
-    height: 50vh;
-    margin: 25vh 0;
-    padding: 2%;
-    background-color: #fefefe;
-    opacity: 1;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    border: 1pt solid black;
-}
-
-.darkTaskForm {
-    background-color: #443c70;
-    color: #fefefe;
-    position: absolute;
-    z-index: 11;
-    width: 40vw;
-    height: 50vh;
+    width: 80%;
+    height: 60%;
     margin: 25vh 0;
     padding: 2%;
     opacity: 1;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(255,255,255,0.5);
-    border: 1pt solid rgba(255,255,255,0.5);
+    border: 0.5pt solid;
 }
 
 .taskForm h1 {
-    margin-bottom: 6%;
     color: #fc5185;
 }
 
@@ -53,7 +35,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 80%;
+    height: 100%;
 }
 
 .taskForm form label p {
@@ -82,4 +64,28 @@
 
 .taskForm button:hover {
     transform: scale(1.1);
+}
+
+.taskForm button svg {
+    font-size: 3rem;
+}
+
+@media(max-width: 1600px) {
+    .taskForm {
+        width: 60vw;
+        height: 60%;
+    }
+}
+
+@media(max-width: 1100px) {
+    .taskForm {
+        width: 80vw;
+        height: 50%;
+    }
+}
+
+@media(max-width: 375px) {
+    .taskForm {
+        width: 80vw;
+    }
 }

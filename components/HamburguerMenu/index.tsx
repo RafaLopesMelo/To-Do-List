@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from './HamburguerMenu.module.css';
 
-export default function HamburguerMenu() {
+const HamburguerMenu = () => {
     const [ showMenu, setShowMenu ] = useState(true);
 
     return (
@@ -23,3 +23,5 @@ export default function HamburguerMenu() {
         </div>
     )
 }
+
+export default HamburguerMenu;

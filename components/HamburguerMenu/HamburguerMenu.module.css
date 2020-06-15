@@ -36,3 +36,32 @@
 .on .menuToggle .three {
     transform: rotate(-45deg) translate(14px, -12px);
 }
+
+@media(max-width: 450px) {
+    .one,
+    .two,
+    .three {
+    border-radius: 5px;
+    height: 4px;
+    width: 100%;
+    margin: 6px auto;
+    transition-duration: 0.5s;
+    }
+
+    .menuToggle {
+        width: 40px;
+    }
+
+    .on .menuToggle .one {
+        transform: rotate(45deg) translate(3px, 3px);
+    }
+    
+    .on .menuToggle .two {
+        opacity: 0;
+    }
+    
+    .on .menuToggle .three {
+        transform: rotate(-45deg) translate(11px, -11px);
+    }
+}
+

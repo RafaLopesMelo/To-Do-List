@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Checkbox from 'react-animated-checkbox';
 import { FiPlus } from 'react-icons/fi';
 
-import InsertTask from '../AddTask';
+import AddTask from '../AddTask';
 
-import styles from './styles/Tasks.module.css';
-import darkStyles from './styles/darkTasks.module.css';
+import styles from './Tasks.module.css';
+import { ThemeContext } from '../ThemeContext';
 
 interface ITask {
     id: string;
@@ -14,7 +14,7 @@ interface ITask {
     isChecked: boolean;
 }
 
-export default function Tasks(props :{isDark: boolean}) {
+const Tasks: React.FC = () => {
     const [ tasks, setTasks ] = useState<ITask[]>([]);
     const [ showAddTask, setShowAddTask ] = useState(false)
 
@@ -47,13 +47,17 @@ export default function Tasks(props :{isDark: boolean}) {
     }
 
     return (
-        <main className={
-            props.isDark
-                ? darkStyles.darkTodo
-                : styles.todo
-            }>
+        <ThemeContext.Consumer>
+            {({theme}) =>
+        <main 
+            className={styles.todo}
+            style={{
+                borderColor: theme.borderColor,
+                boxShadow: theme.boxShadow
+            }}
+        >
             <div className={styles.addTask} onClick={() => setShowAddTask(prev => !prev)}>
-                <FiPlus size={30} />
+                <FiPlus />
                 <h2>Adicionar nova tarefa</h2>
             </div>
 
@@ -61,16 +65,17 @@ export default function Tasks(props :{isDark: boolean}) {
                 <div
                     key={task.id} 
                     className={
-                        props.isDark
-                            ? task.isChecked === true
-                                ? `${styles.invisibleTask} ${darkStyles.darkTask}`
-                                : darkStyles.darkTask
-                            : task.isChecked === true
-                                ? `${styles.invisibleTask} ${styles.task}`
-                                : styles.task
-                    }>
+                        task.isChecked
+                        ? `${styles.invisibleTask} ${styles.task}`
+                        : styles.task
+                    }
+                    style={{
+                        borderColor: theme.borderColor,
+                    }}
+                >
                     <div className={styles.taskTitle}>
                     <Checkbox 
+                        className={styles.checkbox}
                         checked={task.isChecked}
                         onClick={() => {
                             handleCheckboxClick(task.id)
@@ -79,16 +84,20 @@ export default function Tasks(props :{isDark: boolean}) {
                             checkedColor: "#34b93d",
                             size: 30,
                             unCheckedColor: "#b8b8b8"
-                          }}
+                        }}
                         duration={200}
                     />
                         <h3>{task.title}</h3>
                     </div>
-                    {task.description && <p>{task.description}</p> }
+                    {task.description && <p>{task.description}</p>}
                 </div>
             )}
 
-            {showAddTask && <InsertTask show={showAddTask} setShow={setShowAddTask} setTasks={setTasks} isDark={props.isDark}/>}
+            {showAddTask && <AddTask show={showAddTask} setShow={setShowAddTask} setTasks={setTasks}/>}
         </main>
+}
+        </ThemeContext.Consumer>
     )
 }
+
+export default Tasks;
