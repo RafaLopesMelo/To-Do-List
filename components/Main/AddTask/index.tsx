@@ -1,14 +1,17 @@
-import { FormEvent, useState, ChangeEvent, useContext } from 'react';
+import { FormEvent, useState, ChangeEvent } from 'react';
+import { useRouter } from 'next/router';
 import { FaArrowRight } from 'react-icons/fa';
 
 import styles from './AddTask.module.css';
-import { ThemeContext } from '../ThemeContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
-const AddTask = (props: { show: boolean, setShow, setTasks }) => {
+const AddTask: React.FC<{setShow, setTasks}> = (props) => {
     const [formData, setFormData] = useState({
         title: '',
-        description: ''
+        description: '',
     });
+    const router = useRouter()
+    const { project } = router.query
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
@@ -25,6 +28,7 @@ const AddTask = (props: { show: boolean, setShow, setTasks }) => {
                 [...prev,
                 {
                     id,
+                    project: project,
                     title: formData.title,
                     description: formData.description
                 }

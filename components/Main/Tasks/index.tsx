@@ -1,48 +1,29 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState } from 'react';
 import Checkbox from 'react-animated-checkbox';
 import { FiPlus } from 'react-icons/fi';
 
 import AddTask from '../AddTask';
 
 import styles from './Tasks.module.css';
-import { ThemeContext } from '../ThemeContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface ITask {
     id: string;
     title: string;
     description: string;
     isChecked: boolean;
+    project?: string;
 }
 
-const Tasks: React.FC = () => {
-    const [ tasks, setTasks ] = useState<ITask[]>([]);
+const Tasks: React.FC<{tasks: ITask[], setTasks: any}> = (props) => {
     const [ showAddTask, setShowAddTask ] = useState(false)
-
-    useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('tasks'));
-        if (data) setTasks(data)
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
-
-        for(let i=0; i<tasks.length; i++) {
-            if(tasks[i].isChecked === true) {
-                setTimeout(() => {
-                    data.splice(i, 1)
-                    setTasks(data)  
-                }, 500)      
-            }
-        }
-    }, [tasks])
 
     async function handleCheckboxClick(id: string) {
         if (id !== undefined) {
             const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
             const toDeleteTask = data.findIndex((task: ITask) => task.id === id);
             data[toDeleteTask].isChecked = true;
-            setTasks(data); 
+            props.setTasks(data);
         }
     }
 
@@ -61,7 +42,7 @@ const Tasks: React.FC = () => {
                 <h2>Adicionar nova tarefa</h2>
             </div>
 
-            {tasks.map(task => 
+            {props.tasks.map(task => 
                 <div
                     key={task.id} 
                     className={
@@ -93,7 +74,7 @@ const Tasks: React.FC = () => {
                 </div>
             )}
 
-            {showAddTask && <AddTask show={showAddTask} setShow={setShowAddTask} setTasks={setTasks}/>}
+            {showAddTask && <AddTask setShow={setShowAddTask} setTasks={props.setTasks}/>}
         </main>
 }
         </ThemeContext.Consumer>

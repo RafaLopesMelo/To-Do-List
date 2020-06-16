@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    color: #fc5185;
+    text-decoration: none;
 }
 
 @media(min-width: 1600px) {

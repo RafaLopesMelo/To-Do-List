@@ -37,6 +37,12 @@
     transform: rotate(-45deg) translate(14px, -12px);
 }
 
+.menu {
+    width: 20vw;
+    height: 80vh;
+    background-color: #fc5185;
+}
+
 @media(max-width: 450px) {
     .one,
     .two,
@@ -64,4 +70,5 @@
         transform: rotate(-45deg) translate(11px, -11px);
     }
 }
+
 

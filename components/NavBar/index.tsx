@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import { MdSettings } from 'react-icons/md';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import HamburguerMenu from '../HamburguerMenu';
+import HamburguerMenu from '../menu/HamburguerMenu';
 
-import { ThemeContext, themes } from '../ThemeContext';
+import { ThemeContext, themes } from '../contexts/ThemeContext';
 
 import styles from './NavBar.module.css';
 
@@ -12,6 +13,7 @@ const NavBar: React.FC = () => {
             {({ theme, toggleTheme }) =>
                 <nav className={styles.navbar}>
                     <HamburguerMenu />
+                    <h1><Link href='/'>Home</Link></h1>
                     <div className={styles.config}>
                         <MdSettings />
                         {theme === themes.dark
