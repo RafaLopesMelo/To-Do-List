@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MdSettings } from 'react-icons/md';
+import { AiOutlineHome } from 'react-icons/ai';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import HamburguerMenu from '../menu/HamburguerMenu';
 
@@ -13,9 +13,8 @@ const NavBar: React.FC = () => {
             {({ theme, toggleTheme }) =>
                 <nav className={styles.navbar}>
                     <HamburguerMenu />
-                    <Link href='/'><a className={styles.home}>Home</a></Link>
                     <div className={styles.config}>
-                        <MdSettings />
+                        <Link href='/'><a className={styles.home}><AiOutlineHome /></a></Link>
                         {theme === themes.dark
                             ? <FiMoon
                                 onClick={toggleTheme}

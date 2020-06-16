@@ -8,15 +8,6 @@
     color: #fc5185;
 }
 
-.home {
-    font-size: 2.2rem;
-    color: #fc5185;
-}
-
-.home:hover {
-    transform: scale(1.1);
-}
-
 .config {
     display: flex;
     align-items: center;
@@ -30,4 +21,8 @@
 .config svg:hover {
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.home {
+    color: #fc5185;
 }

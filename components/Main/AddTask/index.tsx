@@ -19,7 +19,7 @@ const AddTask: React.FC<{setShow, setTasks}> = (props) => {
         setFormData({ ...formData, [name]: value })
     }
 
-    async function handleSubmit(e: FormEvent) {
+    function handleSubmit(e: FormEvent) {
         e.preventDefault()
         const id = Math.random() * 1000
 

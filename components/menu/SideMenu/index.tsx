@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { FiPlus, FiTrash2 } from 'react-icons/fi';
 import { FaArrowRight } from 'react-icons/fa';
@@ -10,6 +11,8 @@ import styles from './SideMenu.module.css';
 const SideMenu: React.FC = () => {
     const [projects, setProjects] = useState([]);
     const [newProjectName, setNewProjectName] = useState('');
+    const router = useRouter()
+    const { project } = router.query
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('projects'));
@@ -28,14 +31,15 @@ const SideMenu: React.FC = () => {
         }
     }
 
-    function handleDeleteProject(project: string) {
+    function handleDeleteProject(toDeleteProject: string) {
         const confirmation = confirm('Tem certeza que deseja excluir este projeto?')
 
         if (confirmation) {
             const data: string[] = JSON.parse(localStorage.getItem('projects'));
-            const toDeleteProject = data.indexOf(project);
-            data.splice(toDeleteProject, 1)
+            const index = data.indexOf(toDeleteProject);
+            data.splice(index, 1)
             setProjects(data);
+            if(toDeleteProject === project) {router.push('/')}
         }
     }
 
