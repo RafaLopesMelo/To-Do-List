@@ -18,7 +18,7 @@ interface ITask {
 const Tasks: React.FC<{tasks: ITask[], setTasks: any}> = (props) => {
     const [ showAddTask, setShowAddTask ] = useState(false)
 
-    async function handleCheckboxClick(id: string) {
+    function handleCheckboxClick(id: string) {
         if (id !== undefined) {
             const data: ITask[] = JSON.parse(localStorage.getItem('tasks'));
             const toDeleteTask = data.findIndex((task: ITask) => task.id === id);

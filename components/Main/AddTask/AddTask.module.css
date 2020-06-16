@@ -18,7 +18,7 @@
 .taskForm {
     position: absolute;
     z-index: 11;
-    width: 80%;
+    width: 50%;
     height: 60%;
     margin: 25vh 0;
     padding: 2%;
@@ -68,13 +68,6 @@
 
 .taskForm button svg {
     font-size: 3rem;
-}
-
-@media(max-width: 1600px) {
-    .taskForm {
-        width: 60vw;
-        height: 60%;
-    }
 }
 
 @media(max-width: 1100px) {

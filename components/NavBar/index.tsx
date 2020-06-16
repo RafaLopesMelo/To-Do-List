@@ -13,7 +13,7 @@ const NavBar: React.FC = () => {
             {({ theme, toggleTheme }) =>
                 <nav className={styles.navbar}>
                     <HamburguerMenu />
-                    <h1><Link href='/'>Home</Link></h1>
+                    <Link href='/'><a className={styles.home}>Home</a></Link>
                     <div className={styles.config}>
                         <MdSettings />
                         {theme === themes.dark

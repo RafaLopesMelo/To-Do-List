@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 
 import Tasks from './Tasks';
-import SideMenu from '../menu/SideMenu';
 
 import styles from './Main.module.css';
 import { useEffect, useState } from 'react';
@@ -14,7 +13,7 @@ interface ITask {
     project?: string;
 }
 
-const Main = () => {
+const Main: React.FC = () => {
     const [ tasks, setTasks ] = useState<ITask[]>([]);
     const router = useRouter()
     const { project } = router.query;
@@ -40,7 +39,6 @@ const Main = () => {
 
     return (
         <div className={styles.main}>
-            <SideMenu />
             <Tasks 
                 tasks={
                     project

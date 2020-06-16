@@ -1,8 +1,16 @@
 .container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }

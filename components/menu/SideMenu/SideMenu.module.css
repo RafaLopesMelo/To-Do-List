@@ -1,18 +1,21 @@
 .container {
-    height: 80vh;
-    width: 26vw;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 2pt solid #fc5185;
-    border-left: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 32vw;
+    background-color: #fc5185;
+    color: #fff;
     overflow: hidden;
     white-space: nowrap;
     transition-duration: 0.5s;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
 }
 
-.container hr {
-    border-top: 1px solid #fc5185;
-    border-bottom: none;
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .header {
@@ -21,7 +24,8 @@
     justify-content: space-between;
     width: 100%;
     font-size: 1.2rem;
-    padding: 2% 2vw;
+    padding: 4% 2vw;
+    border-bottom: 1pt solid #fff;
     cursor: default;
 }
 
@@ -30,39 +34,43 @@
     margin-top: 2%;
     transition-duration: 1s;
     cursor: pointer;
+    transform: rotate(135deg);
+    display: none;
 }
 
 .header svg:hover {
-    color: #fc5185;
-    transform: rotate(135deg);
+    color: #000;
 }
 
 .projectForm {
     display: flex;
     align-items: center;
+    align-self: center;
     justify-content: space-between;
-    margin: 10% auto;
     width: 80%;
-   
+    margin: 8% 0;
 } 
 
 .projectForm input {
     width: 80%;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    text-indent: 4%;
     border: 1pt solid black;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .projectForm button {
     align-self: flex-end;
-    background-color: rgba(0,0,0,0);
-    color: #fc5185;
+    background: transparent;
+    color: #fff;
     border: none;
     cursor: pointer;
+    transition-duration: 1s;
 }
 
 .projectForm button:hover {
     transform: scale(1.1);
+    color: #000;
 }
 
 .projectForm button svg {
@@ -71,18 +79,33 @@
 
 .projectContainer {
     display: flex;
+    width: 100%;
     align-items: center;
-    height: 10%;
+    justify-content: space-between;
+    word-wrap: wrap;
     font-size: 2.2rem;
-    text-indent: 2vw;
-    border-bottom: 1pt solid rgba(0,0,0,0.2);
+    text-indent: 1vw;
+    margin-top: 8%;
     transition-duration: 0.2s;
 }
 
-.projectContainer a:hover {
-    transform: scale(1.1);
+.projectContainer a {
+    color: #fff;
 }
 
+.projectContainer a:hover {
+    transform: scale(1.02);
+}
+
+.projectContainer svg {
+    font-size: 2.2rem;
+    margin-right: 1vw;
+}
+
+.projectContainer svg:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
 @media(max-width: 1024px) {
     .container {
@@ -99,5 +122,6 @@
 
     .header svg {
         font-size: 6rem;
+        display: flex;
     }
 }
