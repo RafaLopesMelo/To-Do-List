@@ -1,8 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Ilustração NextJS](https://miro.medium.com/fit/c/1838/551/1*rLE1jm-KN5RjNsHmMfQfag.png)
 
-## Getting Started
+## 🔥 &nbsp;&nbsp; Introdução
 
-First, run the development server:
+Esta é uma aplicação de to-do list utilizando o NextJS. Este framework é mantido pela Vercel (antiga Zeit) e possui o objetivo de agilizar a criação de interfaces com React, oferecendo suporte ao SSR (Server Side Rendering) e TypeScript, webpack configurado, roteamento dinâmico e muitas outras vantagens.
+
+O projeto permite ao usuário adicionar tarefas para facilitar a organização de seu dia, bem como a separação de tarefas em projetos separados e independentes, possui os temas light/dark para agradar a diversos usuários e é responsivo a ponto de ser funcional na grande maioria dos tamanhos de tela.
+
+Todas os dados estão sendo persistidos no Local Storage do navegador, sendo assim, a aplicação se torna independente de um banco de dados ou um back end.
+
+## ⚡️ &nbsp;&nbsp; Deploy na Vercel
+
+Uma das maiores vantagens de utilizar o framework é o seu facilitado deploy, graças ao serviço de hospedagem gratuito da própria Vercel. Caso queira saber mais, visite este tópico na [documentação oficial](https://nextjs.org/docs/deployment) para mais detalhes.
+
+## 🎸 &nbsp;&nbsp; Tecnologias usadas:
+
+#### Linguagem: TypeScript
+
+- NextJS (Framework React que traz diversas facilidades para o desenvolvedor)
+- React (Essência do NextJS, tecnologia em que é construído, biblioteca para criar interfaces)
+- CSS modules (Estilização integrada ao NextJS com escopo local)
+
+## 💾 &nbsp;&nbsp; Começando
+
+Primeiro, instale todas as dependências do projeto:
+
+```bash
+npm intall
+# or
+yarn install
+```
+
+Depois, rode o servidor de desenvolvimento:
 
 ```bash
 npm run dev
@@ -10,21 +38,18 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+E então abra o [http://localhost:3000](http://localhost:3000) com seu navegador para ver os resultados.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 👀 &nbsp;&nbsp; Fique atualizado!
 
-## Learn More
+Para aprender mais sobre o NextJS e se manter atualizado, dê uma olhada nestas referências:
 
-To learn more about Next.js, take a look at the following resources:
+- [Documentação do NextJS](https://nextjs.org/docs) - aprenda sobre NextJS e sua API.
+- [the Next.js GitHub repository](https://github.com/vercel/next.js/) - repositório do NextJS, deixe seu feedback e contribua!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💻 &nbsp;&nbsp; Conhecimentos adquiridos:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Contato com o framework NextJS
+- Aprendizado com relação ao roteamento estático e dinâmico do Next
+- Uso do hook useContext do React
+- Prática do design minimalista
