@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Checkbox from 'react-animated-checkbox';
 import { FiPlus } from 'react-icons/fi';
 
@@ -7,16 +7,11 @@ import AddTask from '../AddTask';
 import styles from './Tasks.module.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
-interface ITask {
-    id: string;
-    title: string;
-    description: string;
-    isChecked: boolean;
-    project?: string;
-}
+import { ITask } from '../../../types';
 
 const Tasks: React.FC<{tasks: ITask[], setTasks: any}> = (props) => {
-    const [ showAddTask, setShowAddTask ] = useState(false)
+    const [ showAddTask, setShowAddTask ] = useState(false);
+    const themeCtx = useContext(ThemeContext);
 
     function handleCheckboxClick(id: string) {
         if (id !== undefined) {
@@ -28,13 +23,11 @@ const Tasks: React.FC<{tasks: ITask[], setTasks: any}> = (props) => {
     }
 
     return (
-        <ThemeContext.Consumer>
-            {({theme}) =>
         <main 
             className={styles.todo}
             style={{
-                borderColor: theme.borderColor,
-                boxShadow: theme.boxShadow
+                borderColor: themeCtx.theme.borderColor,
+                boxShadow: themeCtx.theme.boxShadow
             }}
         >
             <div className={styles.addTask} onClick={() => setShowAddTask(prev => !prev)}>
@@ -51,7 +44,7 @@ const Tasks: React.FC<{tasks: ITask[], setTasks: any}> = (props) => {
                         : styles.task
                     }
                     style={{
-                        borderColor: theme.borderColor,
+                        borderColor: themeCtx.theme.borderColor,
                     }}
                 >
                     <div className={styles.taskTitle}>
@@ -76,8 +69,6 @@ const Tasks: React.FC<{tasks: ITask[], setTasks: any}> = (props) => {
 
             {showAddTask && <AddTask setShow={setShowAddTask} setTasks={props.setTasks}/>}
         </main>
-}
-        </ThemeContext.Consumer>
     )
 }
 

@@ -1,15 +1,16 @@
-import { FormEvent, useState, ChangeEvent } from 'react';
+import { FormEvent, useState, ChangeEvent, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { FaArrowRight } from 'react-icons/fa';
 
 import styles from './AddTask.module.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
-const AddTask: React.FC<{setShow, setTasks}> = (props) => {
+const AddTask: React.FC<{ setShow, setTasks }> = (props) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
     });
+    const themeCtx = useContext(ThemeContext);
     const router = useRouter()
     const { project } = router.query
 
@@ -42,53 +43,49 @@ const AddTask: React.FC<{setShow, setTasks}> = (props) => {
     }
 
     return (
-        <ThemeContext.Consumer>
-            {({ theme }) =>
-                <div className={styles.container}>
-                    <div className={styles.background} onClick={() => props.setShow(prev => !prev)}></div>
-                    <div
-                        className={styles.taskForm}
-                        style={{
-                            background: theme.background,
-                            color: theme.color,
-                            borderColor: theme.borderColor,
-                            boxShadow: theme.boxShadow
-                        }}
-                    >
-                        <form onSubmit={handleSubmit}>
-                            <h1>Adicione as informações da tarefa!</h1>
-                            <label>
-                                <p>Coloque um título!</p>
-                                <input
-                                    type="text"
-                                    placeholder="Ex: Ler um livro"
-                                    value={formData.title}
-                                    name="title"
-                                    onChange={handleInputChange}
-                                    maxLength={45}
-                                    autoComplete="off"
-                                    autoFocus
-                                />
-                            </label>
-                            <label>
-                                <p>Descreva sua tarefa! (opcional)</p>
-                                <input
-                                    type="text"
-                                    placeholder="Ex: Pelo menos 10 páginas do livro de história"
-                                    value={formData.description}
-                                    name="description"
-                                    onChange={handleInputChange}
-                                    autoComplete="off"
-                                />
-                            </label>
-                            <button type="submit">
-                                <FaArrowRight />
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            }
-        </ThemeContext.Consumer >
+        <div className={styles.container}>
+            <div className={styles.background} onClick={() => props.setShow(prev => !prev)}></div>
+            <div
+                className={styles.taskForm}
+                style={{
+                    background: themeCtx.theme.background,
+                    color: themeCtx.theme.color,
+                    borderColor: themeCtx.theme.borderColor,
+                    boxShadow: themeCtx.theme.boxShadow
+                }}
+            >
+                <form onSubmit={handleSubmit}>
+                    <h1>Adicione as informações da tarefa!</h1>
+                    <label>
+                        <p>Coloque um título!</p>
+                        <input
+                            type="text"
+                            placeholder="Ex: Ler um livro"
+                            value={formData.title}
+                            name="title"
+                            onChange={handleInputChange}
+                            maxLength={45}
+                            autoComplete="off"
+                            autoFocus
+                        />
+                    </label>
+                    <label>
+                        <p>Descreva sua tarefa! (opcional)</p>
+                        <input
+                            type="text"
+                            placeholder="Ex: Pelo menos 10 páginas do livro de história"
+                            value={formData.description}
+                            name="description"
+                            onChange={handleInputChange}
+                            autoComplete="off"
+                        />
+                    </label>
+                    <button type="submit">
+                        <FaArrowRight />
+                    </button>
+                </form>
+            </div>
+        </div>
     )
 }
 

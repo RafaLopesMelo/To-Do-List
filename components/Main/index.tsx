@@ -5,13 +5,7 @@ import Tasks from './Tasks';
 import styles from './Main.module.css';
 import { useEffect, useState } from 'react';
 
-interface ITask {
-    id: string;
-    title: string;
-    description: string;
-    isChecked: boolean;
-    project?: string;
-}
+import { ITask } from '../../types';
 
 const Main: React.FC = () => {
     const [ tasks, setTasks ] = useState<ITask[]>([]);
